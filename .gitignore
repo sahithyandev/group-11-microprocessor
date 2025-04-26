@@ -1,0 +1,57 @@
+# Vivado Temporary and Cache Files
+*.jou
+*.log
+*.str
+*.cache/
+*.hw/
+*.hw_ila/
+*.hw_platform/
+*.ip_user_files/
+*.sim/
+*.runs/
+*.gen/
+*.xpr.lock
+
+# Vivado Generated Output Files
+*.bit
+*.bin
+*.mcs
+*.ncd
+*.dcp
+*.rpt
+*.edf
+*.tcl
+*.xci
+*.xo
+*.xsa
+
+# Board and Constraint Files (if auto-generated)
+*.bmm
+*.prm
+*.pdi
+*.ltx
+
+# Simulation and Synthesis Files
+*.wdb
+*.wcfg
+*.pb
+*.vcd
+*.wdb
+*.xsim/
+
+# Other IDE/Tool-Specific Files
+*.backup*
+*.tmp
+*.log
+*.str
+*.zip
+*.tar.gz
+
+# DS_Store (MacOS)
+.DS_Store
+
+# Windows-specific
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
