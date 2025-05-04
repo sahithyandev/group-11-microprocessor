@@ -18,24 +18,24 @@ This project involves designing a simple 4-bit nanoprocessor that can execute a 
   - Used to increment the Program Counter
 
 ### 2. Program Control
-- [ ] **3-bit Program Counter (PC)**
+- [x] **3-bit Program Counter (PC)**
   - Use D Flip-Flops with asynchronous reset
 - [ ] **Instruction Decoder**
   - Decodes instructions and activates necessary control lines
   - Supports `MOVI`, `ADD`, `NEG`, and `JZR`
 
 ### 3. Multiplexers / Data Selection
-- [ ] **2-way 3-bit Multiplexer**
+- [x] **2-way 3-bit Multiplexer**
 - [ ] **2-way 4-bit Multiplexer**
 - [ ] **8-way 4-bit Multiplexer**
   - May also use tri-state buffer approach instead
 
 ### 4. Registers and Memory
-- [ ] **Register Bank**
+- [x] **Register Bank**
   - 8 registers, 4-bit wide each
   - R0 hardcoded to 0
   - Use D Flip-Flops with reset
-- [ ] **3-to-8 Decoder**
+- [x] **3-to-8 Decoder**
   - Used for register enable lines
 - [ ] **Program ROM**
   - Stores assembly program as binary
@@ -72,7 +72,7 @@ This project involves designing a simple 4-bit nanoprocessor that can execute a 
 - [x] **Full Adder**
 - [x] **Ripple Carry Adder (RCA) 4-bit**
 - [ ] **Ripple Carry Adder (RCA) 3-bit**
-- [ ] **D Flip-Flop**
+- [x] **D Flip-Flop**
 - [x] **2-to-4 Decoder**
 - [x] **3-to-8 Decoder**
 - [x] **2-to-1 Multiplexers**
