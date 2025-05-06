@@ -7,7 +7,7 @@ end TB_Adder_Subtractor;
 architecture Behavioral of TB_Adder_Subtractor is
 
     -- Component Declaration
-    component Adder_Subtractor_4bit
+    component RCASubtractor_4bit
         port (
             A        : in  STD_LOGIC_VECTOR(3 downto 0);
             B        : in  STD_LOGIC_VECTOR(3 downto 0);
@@ -28,7 +28,7 @@ architecture Behavioral of TB_Adder_Subtractor is
 begin
 
     -- Instantiate the Unit Under Test (UUT)
-    uut: Adder_Subtractor_4bit
+    uut: RCASubtractor_4bit
         port map (
             A        => A,
             B        => B,

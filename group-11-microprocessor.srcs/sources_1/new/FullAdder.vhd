@@ -1,17 +1,17 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY FA IS
+ENTITY FullAdder IS
     PORT (
         A : IN STD_LOGIC;
         B : IN STD_LOGIC;
         C_in : IN STD_LOGIC;
         S : OUT STD_LOGIC;
         C_out : OUT STD_LOGIC);
-END FA;
+END FullAdder;
 
-ARCHITECTURE Behavioral OF FA IS
-    COMPONENT HA
+ARCHITECTURE Behavioral OF FullAdder IS
+    COMPONENT HalfAdder
         PORT (
             A : IN STD_LOGIC;
             B : IN STD_LOGIC;
@@ -22,14 +22,14 @@ ARCHITECTURE Behavioral OF FA IS
     SIGNAL HA0_S, HA0_C, HA1_S, HA1_C : STD_LOGIC;
 
 BEGIN
-    HA_0 : HA
+    HA_0 : HalfAdder
     PORT MAP(
         A => A,
         B => B,
         S => HA0_S,
         C => HA0_C);
 
-    HA_1 : HA
+    HA_1 : HalfAdder
     PORT MAP(
         A => HA0_S,
         B => C_in,

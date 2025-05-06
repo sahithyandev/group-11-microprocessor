@@ -2,17 +2,17 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE ieee.std_logic_misc.OR_REDUCE;
 
-ENTITY Mux_8_to_1 IS
+ENTITY Mux_1bit_8way IS
     PORT (
         S : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
         D : IN STD_LOGIC_VECTOR (7 DOWNTO 0);
         EN : IN STD_LOGIC;
         Y : OUT STD_LOGIC);
-END Mux_8_to_1;
+END Mux_1bit_8way;
 
-ARCHITECTURE Behavioral OF Mux_8_to_1 IS
+ARCHITECTURE Behavioral OF Mux_1bit_8way IS
 
-    COMPONENT Decoder_3_to_8
+    COMPONENT Decoder_3to8
         PORT (
             I : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
             EN : IN STD_LOGIC;
@@ -24,7 +24,7 @@ ARCHITECTURE Behavioral OF Mux_8_to_1 IS
 
 BEGIN
 
-    Decoder_3_to_8_A : Decoder_3_to_8
+    Decoder_3_to_8_A : Decoder_3to8
     PORT MAP(
         I => S,
         EN => EN,

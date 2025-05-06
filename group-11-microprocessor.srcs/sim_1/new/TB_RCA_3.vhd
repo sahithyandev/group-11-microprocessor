@@ -7,7 +7,7 @@ end TB_PC_Incrementer;
 architecture Behavioral of TB_PC_Incrementer is
 
     -- Component Declaration
-    component PC_Incrementer
+    component Adder_3bit
         Port (
             PC     : in  STD_LOGIC_VECTOR(2 downto 0);  -- 3-bit input bus for PC
             Next_PC : out STD_LOGIC_VECTOR(2 downto 0);  -- 3-bit output bus for Next_PC
@@ -23,7 +23,7 @@ architecture Behavioral of TB_PC_Incrementer is
 begin
 
     -- Instantiate the Unit Under Test (UUT)
-    UUT: PC_Incrementer
+    UUT: Adder_3bit
         port map (
             PC => PC,
             Next_PC => Next_PC,

@@ -18,7 +18,7 @@ ENTITY InstructionDecoder IS
 END InstructionDecoder;
 
 ARCHITECTURE Behavioral OF InstructionDecoder IS
-    COMPONENT Decoder_2_to_4
+    COMPONENT Decoder_2to4
         PORT (
             I : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
             EN : IN STD_LOGIC;
@@ -39,7 +39,7 @@ BEGIN
     R_B <= INSTRUCTION_IN(6 DOWNTO 4); -- next 3 bits represetn register B address
     D <= INSTRUCTION_IN(3 DOWNTO 0); -- next 4 bits represent immediate value for (MOVI) or jump address for (JZR)
 
-    Decoder_2_4_0 : Decoder_2_to_4
+    Decoder_2_4_0 : Decoder_2to4
     PORT MAP(
         I => INSTRUCTION_CODE,
         EN => '1',

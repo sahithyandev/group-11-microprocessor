@@ -1,7 +1,7 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY RCA_4 IS
+ENTITY RCA_4bit IS
     PORT (
         A0 : IN STD_LOGIC;
         A1 : IN STD_LOGIC;
@@ -17,11 +17,11 @@ ENTITY RCA_4 IS
         S2 : OUT STD_LOGIC;
         S3 : OUT STD_LOGIC;
         C_out : OUT STD_LOGIC);
-END RCA_4;
+END RCA_4bit;
 
-ARCHITECTURE Behavioral OF RCA_4 IS
+ARCHITECTURE Behavioral OF RCA_4bit IS
 
-    COMPONENT FA
+    COMPONENT FullAdder
         PORT (
             A : IN STD_LOGIC;
             B : IN STD_LOGIC;
@@ -34,7 +34,7 @@ ARCHITECTURE Behavioral OF RCA_4 IS
 
 BEGIN
 
-    FA_0 : FA
+    FA_0 : FullAdder
     PORT MAP(
         A => A0,
         B => B0,
@@ -42,7 +42,7 @@ BEGIN
         S => S0,
         C_Out => FA0_C);
 
-    FA_1 : FA
+    FA_1 : FullAdder
     PORT MAP(
         A => A1,
         B => B1,
@@ -50,7 +50,7 @@ BEGIN
         S => S1,
         C_Out => FA1_C);
 
-    FA_2 : FA
+    FA_2 : FullAdder
     PORT MAP(
         A => A2,
         B => B2,
@@ -58,7 +58,7 @@ BEGIN
         S => S2,
         C_Out => FA2_C);
 
-    FA_3 : FA
+    FA_3 : FullAdder
     PORT MAP(
         A => A3,
         B => B3,

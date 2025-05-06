@@ -1,15 +1,15 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY Decoder_3_to_8 IS
+ENTITY Decoder_3to8 IS
     PORT (
         I : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
         EN : IN STD_LOGIC;
         Y : OUT STD_LOGIC_VECTOR (7 DOWNTO 0));
-END Decoder_3_to_8;
+END Decoder_3to8;
 
-ARCHITECTURE Behavioral OF Decoder_3_to_8 IS
-    COMPONENT Decoder_2_to_4
+ARCHITECTURE Behavioral OF Decoder_3to8 IS
+    COMPONENT Decoder_2to4
         PORT (
             I : IN STD_LOGIC_VECTOR;
             EN : IN STD_LOGIC;
@@ -21,12 +21,12 @@ ARCHITECTURE Behavioral OF Decoder_3_to_8 IS
 
 BEGIN
 
-    Decoder_2_to_4_A : Decoder_2_to_4
+    Decoder_2_to_4_A : Decoder_2to4
     PORT MAP(
         I => IA,
         EN => ENA,
         Y => YA);
-    Decoder_2_to_4_B : Decoder_2_to_4
+    Decoder_2_to_4_B : Decoder_2to4
     PORT MAP(
         I => IB,
         EN => ENB,

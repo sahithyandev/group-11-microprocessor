@@ -17,7 +17,7 @@ end TB_mux2x1_4Bit;
 
 architecture Behavioral of TB_mux2x1_4Bit is
 
-component mux2x1_4Bit
+component Mux_4bit_2way
     Port (
         A   : in  STD_LOGIC_VECTOR(3 downto 0);
         B   : in  STD_LOGIC_VECTOR(3 downto 0);
@@ -31,7 +31,7 @@ signal A, B, Y : STD_LOGIC_VECTOR(3 downto 0);
 signal sel, en : STD_LOGIC;
 
 begin
-    UUT: mux2x1_4Bit
+    UUT: Mux_4bit_2way
     port map (
         A   => A,
         B   => B,

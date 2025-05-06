@@ -1,7 +1,7 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY Register4bit IS
+ENTITY Register_4bit_advanced IS
     PORT (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
@@ -9,11 +9,11 @@ ENTITY Register4bit IS
         d : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
-END Register4bit;
+END Register_4bit_advanced;
 
-ARCHITECTURE Structural OF Register4bit IS
+ARCHITECTURE Structural OF Register_4bit_advanced IS
 
-    COMPONENT D_FF
+    COMPONENT DFF
         PORT (
             clk : IN STD_LOGIC;
             reset : IN STD_LOGIC;
@@ -32,10 +32,10 @@ BEGIN
     d_internal(2) <= (d(2) AND load) OR (NOT(load) AND q_internal(2));
     d_internal(3) <= (d(3) AND load) OR (NOT(load) AND q_internal(3));
 
-    FF0 : D_FF PORT MAP(clk => clk, reset => reset, d => d_internal(0), q => q_internal(0));
-    FF1 : D_FF PORT MAP(clk => clk, reset => reset, d => d_internal(1), q => q_internal(1));
-    FF2 : D_FF PORT MAP(clk => clk, reset => reset, d => d_internal(2), q => q_internal(2));
-    FF3 : D_FF PORT MAP(clk => clk, reset => reset, d => d_internal(3), q => q_internal(3));
+    FF0 : DFF PORT MAP(clk => clk, reset => reset, d => d_internal(0), q => q_internal(0));
+    FF1 : DFF PORT MAP(clk => clk, reset => reset, d => d_internal(1), q => q_internal(1));
+    FF2 : DFF PORT MAP(clk => clk, reset => reset, d => d_internal(2), q => q_internal(2));
+    FF3 : DFF PORT MAP(clk => clk, reset => reset, d => d_internal(3), q => q_internal(3));
 
     q <= q_internal;
 

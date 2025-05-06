@@ -22,7 +22,7 @@ END RegisterBank;
 
 ARCHITECTURE Behavioral OF RegisterBank IS
 
-    COMPONENT Register4Bit
+    COMPONENT Register_4bit_advanced
         PORT (
             clk : IN STD_LOGIC;
             reset : IN STD_LOGIC;
@@ -32,7 +32,7 @@ ARCHITECTURE Behavioral OF RegisterBank IS
         );
     END COMPONENT;
 
-    COMPONENT DECODER_3_TO_8
+    COMPONENT Decoder_3to8
         PORT (
             I : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
             EN : IN STD_LOGIC;
@@ -41,7 +41,7 @@ ARCHITECTURE Behavioral OF RegisterBank IS
     SIGNAL SEL : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
 BEGIN
-    Decoder : Decoder_3_to_8
+    Decoder : Decoder_3to8
     PORT MAP(
         I => REG_SEL,
         EN => '1',
@@ -51,7 +51,7 @@ BEGIN
     REG_OUT0 <= "0000";  -- hardcoding value of R0 to 0000
     
     
-    Reg1 : Register4Bit
+    Reg1 : Register_4bit_advanced
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(1),
@@ -60,7 +60,7 @@ BEGIN
         Q => REG_OUT1
     );
 
-    Reg2 : Register4Bit
+    Reg2 : Register_4bit_advanced
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(2),
@@ -69,7 +69,7 @@ BEGIN
         Q => REG_OUT2
     );
 
-    Reg3 : Register4Bit
+    Reg3 : Register_4bit_advanced
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(3),
@@ -78,7 +78,7 @@ BEGIN
         Q => REG_OUT3
     );
 
-    Reg4 : Register4Bit
+    Reg4 : Register_4bit_advanced
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(4),
@@ -87,7 +87,7 @@ BEGIN
         Q => REG_OUT4
     );
 
-    Reg5 : Register4Bit
+    Reg5 : Register_4bit_advanced
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(5),
@@ -96,7 +96,7 @@ BEGIN
         Q => REG_OUT5
     );
 
-    Reg6 : Register4Bit
+    Reg6 : Register_4bit_advanced
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(6),
@@ -105,7 +105,7 @@ BEGIN
         Q => REG_OUT6
     );
 
-    Reg7 : Register4Bit
+    Reg7 : Register_4bit_advanced
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(7),

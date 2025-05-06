@@ -11,15 +11,15 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 
-entity mux2x1_4Bit is
+entity Mux_4bit_2way is
     Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
            B : in STD_LOGIC_VECTOR (3 downto 0);
            En: in STD_LOGIC;
            sel : in STD_LOGIC;
            Y : out STD_LOGIC_VECTOR (3 downto 0));
-end mux2x1_4Bit;
+end Mux_4bit_2way;
 
-architecture Behavioral of mux2x1_4Bit is
+architecture Behavioral of Mux_4bit_2way is
 
 signal not_sel : STD_LOGIC;
 signal A_out, B_out : STD_LOGIC_VECTOR(3 downto 0);

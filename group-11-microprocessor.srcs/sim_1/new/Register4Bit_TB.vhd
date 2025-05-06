@@ -7,7 +7,7 @@ END Register4bit_tb;
 
 ARCHITECTURE behavior OF Register4bit_tb IS
 
-    COMPONENT Register4bit
+    COMPONENT Register_4bit
         PORT (
             clk : IN STD_LOGIC;
             reset : IN STD_LOGIC;
@@ -27,7 +27,7 @@ ARCHITECTURE behavior OF Register4bit_tb IS
 
 BEGIN
 
-    uut: Register4bit PORT MAP (
+    uut: Register_4bit PORT MAP (
         clk => clk,
         reset => reset,
         load => load,

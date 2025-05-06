@@ -16,7 +16,7 @@ entity TB_Mux8x1_4Bit is
 end TB_Mux8x1_4Bit;
 
 architecture Behavioral of TB_Mux8x1_4Bit is
-component Mux8x1_4Bit
+component Mux_4bit_8way
     Port (
         D0  : in  STD_LOGIC_VECTOR(3 downto 0);
         D1  : in  STD_LOGIC_VECTOR(3 downto 0);
@@ -38,7 +38,7 @@ signal en  : STD_LOGIC;
 signal Y   : STD_LOGIC_VECTOR(3 downto 0);
 
 begin
-    UUT: Mux8x1_4Bit
+    UUT: Mux_4bit_8way
     port map (
         D0 => D0, D1 => D1, D2 => D2, D3 => D3,
         D4 => D4, D5 => D5, D6 => D6, D7 => D7,

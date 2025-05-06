@@ -15,14 +15,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity HA is
+entity HalfAdder is
     Port ( A : in STD_LOGIC;
            B : in STD_LOGIC;
            S : out STD_LOGIC;
            C : out STD_LOGIC);
-end HA;
+end HalfAdder;
 
-architecture Behavioral of HA is
+architecture Behavioral of HalfAdder is
 
 begin
 	S <= A xor B;

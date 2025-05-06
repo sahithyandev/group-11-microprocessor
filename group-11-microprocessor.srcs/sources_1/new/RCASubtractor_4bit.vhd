@@ -1,7 +1,7 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY Adder_Subtractor_4bit IS
+ENTITY RCASubtractor_4bit IS
     PORT (
         A        : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
         B        : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -10,11 +10,11 @@ ENTITY Adder_Subtractor_4bit IS
         C_out    : OUT STD_LOGIC;
         Overflow : OUT STD_LOGIC
     );
-END Adder_Subtractor_4bit;
+END RCASubtractor_4bit;
 
-ARCHITECTURE Behavioral OF Adder_Subtractor_4bit IS
+ARCHITECTURE Behavioral OF RCASubtractor_4bit IS
 
-    COMPONENT FA
+    COMPONENT FullAdder
         PORT (
             A     : IN  STD_LOGIC;
             B     : IN  STD_LOGIC;
@@ -37,10 +37,10 @@ BEGIN
     B_xor(3) <= B(3) XOR SUB;
 
     -- Instantiate 4 full adders
-    FA0 : FA PORT MAP(A => A(0), B => B_xor(0), C_in => SUB,     S => S(0), C_out => C(0));
-    FA1 : FA PORT MAP(A => A(1), B => B_xor(1), C_in => C(0),    S => S(1), C_out => C(1));
-    FA2 : FA PORT MAP(A => A(2), B => B_xor(2), C_in => C(1),    S => S(2), C_out => C(2));
-    FA3 : FA PORT MAP(A => A(3), B => B_xor(3), C_in => C(2),    S => S(3), C_out => Final_Cout);
+    FA0 : FullAdder PORT MAP(A => A(0), B => B_xor(0), C_in => SUB,     S => S(0), C_out => C(0));
+    FA1 : FullAdder PORT MAP(A => A(1), B => B_xor(1), C_in => C(0),    S => S(1), C_out => C(1));
+    FA2 : FullAdder PORT MAP(A => A(2), B => B_xor(2), C_in => C(1),    S => S(2), C_out => C(2));
+    FA3 : FullAdder PORT MAP(A => A(3), B => B_xor(3), C_in => C(2),    S => S(3), C_out => Final_Cout);
 
     C_out <= Final_Cout;
 

@@ -10,7 +10,7 @@ ENTITY Multiplier_2 IS
 END Multiplier_2;
 
 ARCHITECTURE Behavioral OF Multiplier_2 IS
-    COMPONENT FA
+    COMPONENT FullAdder
         PORT (
             A : IN STD_LOGIC;
             B : IN STD_LOGIC;
@@ -29,7 +29,7 @@ BEGIN
     A1B1 <= A(1) AND B(1);
     A0B1 <= A(0) AND B(1);
 
-    FA_0 : FA
+    FA_0 : FullAdder
     PORT MAP(
         A => A1B0,
         B => A0B1,
@@ -37,7 +37,7 @@ BEGIN
         S => Y(1),
         C_Out => C1);
 
-    FA_1 : FA
+    FA_1 : FullAdder
     PORT MAP(
         A => '0',
         B => A1B1,
