@@ -5,33 +5,32 @@
 -- Module Name: Mux8x1_4Bit - Behavioral
 
 ----------------------------------------------------------------------------------
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
 
+ENTITY Mux_4bit_8way IS
+    PORT (
+        D0 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        D1 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        D2 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        D3 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        D4 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        D5 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        D6 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        D7 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        sel : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+        en : IN STD_LOGIC;
+        Y : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
+END Mux_4bit_8way;
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+ARCHITECTURE Behavioral OF Mux_4bit_8way IS
 
-entity Mux_4bit_8way is
-    Port ( D0 : in STD_LOGIC_VECTOR (3 downto 0);
-           D1 : in STD_LOGIC_VECTOR (3 downto 0);
-           D2 : in STD_LOGIC_VECTOR (3 downto 0);
-           D3 : in STD_LOGIC_VECTOR (3 downto 0);
-           D4 : in STD_LOGIC_VECTOR (3 downto 0);
-           D5 : in STD_LOGIC_VECTOR (3 downto 0);
-           D6 : in STD_LOGIC_VECTOR (3 downto 0);
-           D7 : in STD_LOGIC_VECTOR (3 downto 0);
-           sel : in STD_LOGIC_VECTOR (2 downto 0);
-           en : in STD_LOGIC;
-           Y : out STD_LOGIC_VECTOR (3 downto 0));
-end Mux_4bit_8way;
+    TYPE data_array IS ARRAY(0 TO 7) OF STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL mux_input : data_array;
+    SIGNAL selected_input : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
-architecture Behavioral of Mux_4bit_8way is
-
-type data_array is array(0 to 7) of STD_LOGIC_VECTOR(3 downto 0);
-signal mux_input : data_array;
-signal selected_input : STD_LOGIC_VECTOR(3 downto 0);
-
-begin
+BEGIN
     -- Pack inputs into array
     mux_input(0) <= D0;
     mux_input(1) <= D1;
@@ -43,9 +42,7 @@ begin
     mux_input(7) <= D7;
 
     selected_input <= mux_input(to_integer(unsigned(sel)));
-    
-    --With Enable Signal, Final Output
-    Y <= selected_input and (en & en & en & en);
 
-    
-end Behavioral;
+    --With Enable Signal, Final Output
+    Y <= selected_input AND (en & en & en & en);
+END Behavioral;

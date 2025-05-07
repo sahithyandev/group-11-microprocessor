@@ -48,9 +48,7 @@ BEGIN
         Y => SEL
     );
 
-    REG_OUT0 <= "0000";  -- hardcoding value of R0 to 0000
-    
-    
+    REG_OUT0 <= "0000"; -- hardcoding value of R0 to 0000
     Reg1 : Register_4bit_advanced
     PORT MAP(
         D => REG_IN,

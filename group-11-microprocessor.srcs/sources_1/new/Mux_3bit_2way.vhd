@@ -2,26 +2,26 @@
 -- Engineer: Sahithyan K.
 ----------------------------------------------------------------------------------
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-entity Mux_3bit_2way is
-    port (
-        A : in std_logic_vector(2 downto 0);
-        B : in std_logic_vector(2 downto 0);
-        S : in std_logic;
-        Y : out std_logic_vector(2 downto 0));
-end Mux_3bit_2way;
+ENTITY Mux_3bit_2way IS
+    PORT (
+        A : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+        B : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+        S : IN STD_LOGIC;
+        Y : OUT STD_LOGIC_VECTOR(2 DOWNTO 0));
+END Mux_3bit_2way;
 
-architecture Behavioral of Mux_3bit_2way is
+ARCHITECTURE Behavioral OF Mux_3bit_2way IS
 
-begin
-    process (A,B,S)
-    begin
-        if S = '0' then
+BEGIN
+    PROCESS (A, B, S)
+    BEGIN
+        IF S = '0' THEN
             Y <= A;
-        else
+        ELSE
             Y <= B;
-        end if;
-    end process;
-end Behavioral;
+        END IF;
+    END PROCESS;
+END Behavioral;

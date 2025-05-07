@@ -1,59 +1,59 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-entity TB_PC_Incrementer is
-end TB_PC_Incrementer;
+ENTITY TB_PC_Incrementer IS
+END TB_PC_Incrementer;
 
-architecture Behavioral of TB_PC_Incrementer is
+ARCHITECTURE Behavioral OF TB_PC_Incrementer IS
 
     -- Component Declaration
-    component Adder_3bit
-        Port (
-            PC     : in  STD_LOGIC_VECTOR(2 downto 0);  -- 3-bit input bus for PC
-            Next_PC : out STD_LOGIC_VECTOR(2 downto 0);  -- 3-bit output bus for Next_PC
-            PC_Carry : out STD_LOGIC                      -- Carry output
+    COMPONENT Adder_3bit
+        PORT (
+            PC : IN STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3-bit input bus for PC
+            Next_PC : OUT STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3-bit output bus for Next_PC
+            PC_Carry : OUT STD_LOGIC -- Carry output
         );
-    end component;
+    END COMPONENT;
 
     -- Signals to connect to PC_Incrementer
-    signal PC : STD_LOGIC_VECTOR(2 downto 0) := "000";
-    signal Next_PC : STD_LOGIC_VECTOR(2 downto 0);
-    signal PC_Carry : STD_LOGIC;
+    SIGNAL PC : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+    SIGNAL Next_PC : STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SIGNAL PC_Carry : STD_LOGIC;
 
-begin
+BEGIN
 
     -- Instantiate the Unit Under Test (UUT)
-    UUT: Adder_3bit
-        port map (
-            PC => PC,
-            Next_PC => Next_PC,
-            PC_Carry => PC_Carry
-        );
+    UUT : Adder_3bit
+    PORT MAP(
+        PC => PC,
+        Next_PC => Next_PC,
+        PC_Carry => PC_Carry
+    );
 
     -- Stimulus Process
-    stim_proc: process
-    begin
+    stim_proc : PROCESS
+    BEGIN
         -- Test 0 + 1 = 1
         PC <= "000";
-        wait for 10 ns;
+        WAIT FOR 10 ns;
 
         -- Test 1 + 1 = 2
         PC <= "001";
-        wait for 10 ns;
+        WAIT FOR 10 ns;
 
         -- Test 2 + 1 = 3
         PC <= "010";
-        wait for 10 ns;
+        WAIT FOR 10 ns;
 
         -- Test 6 + 1 = 7
         PC <= "110";
-        wait for 10 ns;
+        WAIT FOR 10 ns;
 
         -- Test 7 + 1 = 0 (Overflow, carry = 1)
         PC <= "111";
-        wait for 10 ns;
+        WAIT FOR 10 ns;
 
-        wait;
-    end process;
+        WAIT;
+    END PROCESS;
 
-end Behavioral;
+END Behavioral;

@@ -1,10 +1,8 @@
 ----------------------------------------------------------------------------------
 -- Engineer: Sahithyan K.
 ----------------------------------------------------------------------------------
-
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -15,17 +13,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity HalfAdder is
-    Port ( A : in STD_LOGIC;
-           B : in STD_LOGIC;
-           S : out STD_LOGIC;
-           C : out STD_LOGIC);
-end HalfAdder;
+ENTITY HalfAdder IS
+    PORT (
+        A : IN STD_LOGIC;
+        B : IN STD_LOGIC;
+        S : OUT STD_LOGIC;
+        C : OUT STD_LOGIC);
+END HalfAdder;
 
-architecture Behavioral of HalfAdder is
+ARCHITECTURE Behavioral OF HalfAdder IS
 
-begin
-	S <= A xor B;
-	C <= A and B;
+BEGIN
+    S <= A XOR B;
+    C <= A AND B;
 
-end Behavioral;
+END Behavioral;

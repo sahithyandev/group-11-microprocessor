@@ -2,39 +2,39 @@
 -- Engineer: Sahithyan K.
 ----------------------------------------------------------------------------------
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
 
-entity PC_3bit is
-    Port (
-        Clk        : in std_logic;
-        Reset      : in std_logic;
-        Enable     : in std_logic;
-        Load       : in std_logic;
-        Load_value : in std_logic_vector(2 downto 0);
-        PC_out     : out std_logic_vector(2 downto 0)
+ENTITY PC_3bit IS
+    PORT (
+        Clk : IN STD_LOGIC;
+        Reset : IN STD_LOGIC;
+        Enable : IN STD_LOGIC;
+        Load : IN STD_LOGIC;
+        Load_value : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+        PC_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
     );
-end PC_3bit;
+END PC_3bit;
 
-architecture Behavioral of PC_3bit is
+ARCHITECTURE Behavioral OF PC_3bit IS
 
-signal PC : unsigned(2 downto 0) := (others => '0');
+    SIGNAL PC : unsigned(2 DOWNTO 0) := (OTHERS => '0');
 
-begin
-    process(clk)
-    begin
-        if rising_edge(clk) then
-            if Reset = '1' then
-                PC <= (others => '0');
-            elsif Load = '1' then
+BEGIN
+    PROCESS (clk)
+    BEGIN
+        IF rising_edge(clk) THEN
+            IF Reset = '1' THEN
+                PC <= (OTHERS => '0');
+            ELSIF Load = '1' THEN
                 PC <= unsigned(Load_value);
-            elsif Enable = '1' then
+            ELSIF Enable = '1' THEN
                 PC <= PC + 1;
-            end if;
-        end if;
-    end process;
-    
-    PC_out <= std_logic_vector(PC);
+            END IF;
+        END IF;
+    END PROCESS;
 
-end Behavioral;
+    PC_out <= STD_LOGIC_VECTOR(PC);
+
+END Behavioral;

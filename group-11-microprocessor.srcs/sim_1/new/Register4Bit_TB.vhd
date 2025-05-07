@@ -17,17 +17,17 @@ ARCHITECTURE behavior OF Register4bit_tb IS
         );
     END COMPONENT;
 
-    SIGNAL clk   : STD_LOGIC := '0';
+    SIGNAL clk : STD_LOGIC := '0';
     SIGNAL reset : STD_LOGIC := '0';
-    SIGNAL load  : STD_LOGIC := '0';
-    SIGNAL d     : STD_LOGIC_VECTOR(3 DOWNTO 0) := (others => '0');
-    SIGNAL q     : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL load : STD_LOGIC := '0';
+    SIGNAL d : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL q : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
     CONSTANT clk_period : TIME := 10 ns;
 
 BEGIN
 
-    uut: Register_4bit PORT MAP (
+    uut : Register_4bit PORT MAP(
         clk => clk,
         reset => reset,
         load => load,
