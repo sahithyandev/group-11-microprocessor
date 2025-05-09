@@ -1,5 +1,6 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_MISC.OR_REDUCE;
 
 ENTITY InstructionDecoder IS
     PORT (
@@ -51,29 +52,46 @@ BEGIN
     IS_NEG <= INSTRUCTION_DECODED(1);
     IS_JZR <= INSTRUCTION_DECODED(3);
 
-    -- MOVI
-    REG_EN <= R_A; -- Enable the first register for write
-    LOAD_SEL <= '1'; -- set load source to immedate value
-    IMMEDIATE_VAL <= D; -- set immedate value from instruction
+    PROCESS (IS_MOVI, IS_ADD, IS_NEG, IS_JZR, R_A, R_B, D, REG_CHK_JMP)
+    BEGIN
+        -- Default outputs
+        ADD_SUB_SEL <= '0';
+        REG_EN <= (OTHERS => '0');
+        REG_SEL_A <= (OTHERS => '0');
+        REG_SEL_B <= (OTHERS => '0');
+        IMMEDIATE_VAL <= (OTHERS => '0');
+        LOAD_SEL <= '0';
+        JMP_FLAG <= '0';
+        JMP_ADDR <= (OTHERS => '0');
 
-    -- ADD
-    REG_SEL_A <= R_A; -- set first register as the first input of RCA
-    REG_SEL_B <= R_B; -- set secnd register as second input of RCA
-    REG_EN <= R_A; -- enable first register for write
-    ADD_SUB_SEL <= '0'; -- set ADD mode
-    LOAD_SEL <= '0'; --set load source to RCA
+        IF IS_MOVI = '1' THEN
+            -- MOVI
+            REG_EN <= R_A; -- Enable the first register for write
+            LOAD_SEL <= '1'; -- set load source to immediate value
+            IMMEDIATE_VAL <= D; -- set immediate value from instruction
 
-    -- NEG
-    REG_SEL_A <= "000"; -- set 0 as the first input of RCA
-    REG_SEL_B <= R_B; -- set secnd register as second input of RCA
-    REG_EN <= R_A; -- enable first register for write
-    ADD_SUB_SEL <= '1'; -- set SUBTRACT mode
-    LOAD_SEL <= '0'; --set load source to RCA
+        ELSIF IS_ADD = '1' THEN
+            -- ADD
+            REG_SEL_A <= R_A; -- set first register as the first input of RCA
+            REG_SEL_B <= R_B; -- set second register as second input of RCA
+            REG_EN <= R_A; -- enable first register for write
+            ADD_SUB_SEL <= '0'; -- set ADD mode
+            LOAD_SEL <= '0'; -- set load source to RCA
 
-    -- JZR
-    REG_SEL_A <= R_A; -- set first register as the REG_CHK
-    JMP_ADDR <= D(2 DOWNTO 0); -- SET JMP address
-    JMP_FLAG <= '1' WHEN REG_CHK_JMP = "0000" ELSE
-        '0'; -- set JMP flag if register is 0000
+        ELSIF IS_NEG = '1' THEN
+            -- NEG
+            REG_SEL_A <= "000"; -- set 0 as the first input of RCA
+            REG_SEL_B <= R_B; -- set second register as second input of RCA
+            REG_EN <= R_A; -- enable first register for write
+            ADD_SUB_SEL <= '1'; -- set SUBTRACT mode
+            LOAD_SEL <= '0'; -- set load source to RCA
+
+        ELSIF IS_JZR = '1' THEN
+            -- JZR
+            REG_SEL_A <= R_A; -- set first register as the REG_CHK
+            JMP_ADDR <= D(2 DOWNTO 0); -- SET JMP address
+            JMP_FLAG <= NOT(OR_REDUCE(REG_CHK_JMP)); -- set JMP flag to 1 if REG_CHK is 0000
+        END IF;
+    END PROCESS;
 
 END Behavioral;
