@@ -7,11 +7,11 @@
 ----------------------------------------------------------------------------------
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-ENTITY TB_mux2x1_4Bit IS
+ENTITY TB_Mux_4bit_2way IS
     --  Port ( );
-END TB_mux2x1_4Bit;
+END TB_Mux_4bit_2way;
 
-ARCHITECTURE Behavioral OF TB_mux2x1_4Bit IS
+ARCHITECTURE Behavioral OF TB_Mux_4bit_2way IS
 
     COMPONENT Mux_4bit_2way
         PORT (
@@ -40,11 +40,11 @@ BEGIN
         A <= "0101";
         B <= "1110";
         sel <= '0';
-        wait for 100ns;
+        wait for 100 ns;
         
         --Test Case(02)|Selecting B [ A:='0101' B:='1110' sel:=1  (output should be B, which is 1110)];
         sel <= '1';
-        wait for 100ns;
+        wait for 100 ns;
           
         -- Test Case(03)|New Inputs,Check MUX again [A:='1101' B:='1001' sel:=0  (output should be A, which is 1101)]
         A   <= "1101"; 
