@@ -1,10 +1,10 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY InstructionDecoder_tb IS
-END InstructionDecoder_tb;
+ENTITY TB_InstructionDecoder IS
+END TB_InstructionDecoder;
 
-ARCHITECTURE behavior OF InstructionDecoder_tb IS
+ARCHITECTURE behavior OF TB_InstructionDecoder IS
 
     -- Component under test
     COMPONENT InstructionDecoder
