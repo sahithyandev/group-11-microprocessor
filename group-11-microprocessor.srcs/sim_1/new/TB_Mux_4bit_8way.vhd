@@ -25,14 +25,12 @@ ARCHITECTURE Behavioral OF TB_Mux8x1_4Bit IS
             D6 : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             D7 : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             sel : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-            en : IN STD_LOGIC;
             Y : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
     END COMPONENT;
 
     SIGNAL D0, D1, D2, D3, D4, D5, D6, D7 : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL sel : STD_LOGIC_VECTOR(2 DOWNTO 0);
-    SIGNAL en : STD_LOGIC;
     SIGNAL Y : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
 BEGIN
@@ -41,7 +39,6 @@ BEGIN
         D0 => D0, D1 => D1, D2 => D2, D3 => D3,
         D4 => D4, D5 => D5, D6 => D6, D7 => D7,
         sel => sel,
-        en => en,
         Y => Y
     );
 
@@ -58,7 +55,7 @@ BEGIN
         D6 <= "0110";
         D7 <= "0111";
 
-        en <= '1';
+
 
         -- Test each selector value with enable = 1
         FOR i IN 0 TO 7 LOOP
@@ -73,16 +70,6 @@ BEGIN
             -- When i=7, D7 is selected
             WAIT FOR 100 ns;
         END LOOP;
-
-        -- Disable enable signal
-        en <= '0';
-        FOR i IN 0 TO 7 LOOP
-            sel <= STD_LOGIC_VECTOR(to_unsigned(i, 3));
-            --None of the inputs are selected when  en=0
-            WAIT FOR 100 ns;
-        END LOOP;
-
-        WAIT;
     END PROCESS;
 
 END Behavioral;
