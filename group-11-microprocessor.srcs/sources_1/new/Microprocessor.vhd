@@ -41,7 +41,6 @@ ARCHITECTURE Behavioral OF Microprocessor IS
             D6 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             D7 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             sel : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
-            en : IN STD_LOGIC;
             Y : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
     END COMPONENT;
 
@@ -60,7 +59,6 @@ ARCHITECTURE Behavioral OF Microprocessor IS
         PORT (
             A : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             B : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-            En : IN STD_LOGIC;
             sel : IN STD_LOGIC;
             Y : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
     END COMPONENT;
@@ -229,7 +227,6 @@ BEGIN
         D6 => reg_out6,
         D7 => reg_out7,
         sel => reg_sel_a,
-        en => '1',
         Y => mux8_out_A
     );
     -- Mux to select register B
@@ -244,7 +241,6 @@ BEGIN
         D6 => reg_out6,
         D7 => reg_out7,
         sel => reg_sel_b,
-        en => '1',
         Y => mux8_out_B
     );
 
@@ -253,7 +249,6 @@ BEGIN
     PORT MAP(
         A => subtract_out, -- or selected reg_outB, adjust if needed
         B => immediate_val,
-        En => '1',
         sel => load_sel,
         Y => mux2_out
     );

@@ -31,7 +31,7 @@ ARCHITECTURE behavior OF TB_Microprocessor IS
     SIGNAL Seg_tb : STD_LOGIC_VECTOR (6 DOWNTO 0);
 
     -- Clock period
-    CONSTANT clk_period : TIME := 10 ns;
+    CONSTANT clk_period : TIME := 20 ns;
 
 BEGIN
 
