@@ -11,7 +11,6 @@ ENTITY Mux_4bit_2way IS
     PORT (
         A : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         B : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-        En : IN STD_LOGIC;
         sel : IN STD_LOGIC;
         Y : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
 END Mux_4bit_2way;
@@ -20,7 +19,7 @@ ARCHITECTURE Behavioral OF Mux_4bit_2way IS
 
     SIGNAL not_sel : STD_LOGIC;
     SIGNAL A_out, B_out : STD_LOGIC_VECTOR(3 DOWNTO 0);
-    SIGNAL mux_out : STD_LOGIC_VECTOR(3 DOWNTO 0);
+
 
 BEGIN
     --Inverse of sel signal
@@ -36,16 +35,10 @@ BEGIN
     B_out(2) <= B(2) AND sel;
     B_out(3) <= B(3) AND sel;
 
-    --Output of the Multiplexer without considering Enable 
-    mux_out(0) <= A_out(0) OR B_out(0);
-    mux_out(1) <= A_out(1) OR B_out(1);
-    mux_out(2) <= A_out(2) OR B_out(2);
-    mux_out(3) <= A_out(3) OR B_out(3);
-
-    --Final Output with Enable Signal
-    Y(0) <= mux_out(0) AND en;
-    Y(1) <= mux_out(1) AND en;
-    Y(2) <= mux_out(2) AND en;
-    Y(3) <= mux_out(3) AND en;
+    --Final Output 
+    Y(0) <= A_out(0) or B_out(0);
+    Y(1) <= A_out(1) or B_out(1);
+    Y(2) <= A_out(2) or B_out(2);
+    Y(3) <= A_out(3) or B_out(3);
 
 END Behavioral;
