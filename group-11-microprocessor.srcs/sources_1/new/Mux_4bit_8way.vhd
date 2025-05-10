@@ -20,7 +20,6 @@ ENTITY Mux_4bit_8way IS
         D6 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         D7 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         sel : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
-        en : IN STD_LOGIC;
         Y : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
 END Mux_4bit_8way;
 
@@ -43,6 +42,6 @@ BEGIN
 
     selected_input <= mux_input(to_integer(unsigned(sel)));
 
-    --With Enable Signal, Final Output
-    Y <= selected_input AND (en & en & en & en);
+    -- Final Output
+    Y <= selected_input ;
 END Behavioral;
