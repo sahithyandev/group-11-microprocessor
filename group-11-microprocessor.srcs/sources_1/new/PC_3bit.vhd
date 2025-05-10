@@ -29,7 +29,7 @@ BEGIN
                 PC <= (OTHERS => '0');
             ELSIF Load = '1' THEN
                 PC <= unsigned(Load_value);
-            ELSIF Enable = '1' THEN
+            ELSIF Enable = '1' AND PC < 7 THEN
                 PC <= PC + 1;
             END IF;
         END IF;
