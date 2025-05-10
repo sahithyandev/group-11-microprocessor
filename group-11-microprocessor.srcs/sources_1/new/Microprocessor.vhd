@@ -50,8 +50,8 @@ ARCHITECTURE Behavioral OF Microprocessor IS
             B : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             SUB : IN STD_LOGIC;
             S : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-            C_out : OUT STD_LOGIC;
-            Overflow : OUT STD_LOGIC
+            Overflow : OUT STD_LOGIC;
+            Zero : OUT STD_LOGIC
         );
     END COMPONENT;
 
@@ -124,7 +124,6 @@ ARCHITECTURE Behavioral OF Microprocessor IS
 
     -- Signals from RCASubtractor_4bit
     SIGNAL subtract_out : STD_LOGIC_VECTOR(3 DOWNTO 0);
-    SIGNAL carry_out : STD_LOGIC;
     SIGNAL overflow_flag : STD_LOGIC;
 
     -- Signals from PC_3bit
@@ -260,7 +259,7 @@ BEGIN
         B => mux8_out_B,
         SUB => add_sub_sel,
         S => subtract_out,
-        C_out => carry_out,
+        Zero => Zero,
         Overflow => overflow_flag
     );
 
