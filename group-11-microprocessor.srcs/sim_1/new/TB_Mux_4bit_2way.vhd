@@ -52,11 +52,11 @@ BEGIN
         sel <= '0';
         wait for 100 ns;
         
-       -- Test Case(04)|New Inputs,Check MUX again [A:='1101' B:='1001' sel:=1 en:=1 (output should be B, which is 1001)]
+       -- Test Case(04)|New Inputs,Check MUX again [A:='1101' B:='1001' sel:=1 (output should be B, which is 1001)]
         sel <= '1';
         wait for 100 ns;
         wait;
         
-    end process;
+    End Process;
 
 END Behavioral;
