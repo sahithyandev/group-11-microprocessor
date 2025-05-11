@@ -1,6 +1,7 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.STD_LOGIC_MISC.OR_REDUCE;
 
 ENTITY RCASubtractor_4bit IS
     PORT (
@@ -46,6 +47,6 @@ BEGIN
     -- Overflow detection: XOR of last two carry bits
     Overflow <= C(2) XOR Final_Cout;
 
-    Zero <= NOT(Result(0) OR Result(1) OR Result(2) OR Result(3));
+    Zero <= NOT(OR_REDUCE(Result));
 
 END Behavioral;
