@@ -111,6 +111,12 @@ ARCHITECTURE Behavioral OF Microprocessor IS
             instruction : OUT STD_LOGIC_VECTOR (11 DOWNTO 0));
     END COMPONENT;
 
+    COMPONENT LUT_16_7
+        PORT ( 
+            address : in STD_LOGIC_VECTOR (3 downto 0);
+            data : out STD_LOGIC_VECTOR (6 downto 0));
+    END COMPONENT;
+
     -- Signals from RegisterBank
     SIGNAL reg_out0, reg_out1, reg_out2, reg_out3 : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL reg_out4, reg_out5, reg_out6, reg_out7 : STD_LOGIC_VECTOR(3 DOWNTO 0);
