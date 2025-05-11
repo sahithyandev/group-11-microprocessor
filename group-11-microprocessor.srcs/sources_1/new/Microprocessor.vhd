@@ -111,10 +111,10 @@ ARCHITECTURE Behavioral OF Microprocessor IS
             instruction : OUT STD_LOGIC_VECTOR (11 DOWNTO 0));
     END COMPONENT;
 
-    COMPONENT LUT_16_7
-        PORT ( 
-            address : in STD_LOGIC_VECTOR (3 downto 0);
-            data : out STD_LOGIC_VECTOR (6 downto 0));
+    COMPONENT SevenSeg_ROM
+        PORT (
+            address : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+            data : OUT STD_LOGIC_VECTOR (6 DOWNTO 0));
     END COMPONENT;
 
     -- Signals from RegisterBank
@@ -273,6 +273,11 @@ BEGIN
     Data <= reg_out7;
     Overflow <= overflow_flag;
 
-    -- TODO: Implement 7-segment display logic
+    -- 7-segment display logic
+    SEGMENT_DISPLAY : SevenSeg_ROM
+    PORT MAP(
+        address => reg_out7,
+        data => Seg
+    );
 
 END Behavioral;
