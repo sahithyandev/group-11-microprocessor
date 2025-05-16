@@ -44,7 +44,7 @@ This project involves designing a simple 4-bit nanoprocessor that can execute a 
 ### 5. Miscellaneous
 - [ ] **Tri-state Buffers (optional)**
   - Investigate implementation in VHDL as alternative to muxes
-- [ ] **Bus definitions**
+- [x] **Bus definitions**
   - Use clean bus labels (e.g., `D(3 downto 0)`, `I(11 downto 0)`)
 
 ### 6. Top-Level Design
@@ -56,8 +56,8 @@ This project involves designing a simple 4-bit nanoprocessor that can execute a 
 - [x] Convert to machine code and hardcode into ROM
 
 ### 8. Output Handling
-- [ ] Connect R7 to LEDs and 7-segment display
-- [ ] Connect carry/zero flags to LD14 and LD15
+- [x] Connect R7 to LEDs and 7-segment display
+- [x] Connect carry/zero flags to LD14 and LD15
 
 ### 9. Final Steps
 - [ ] Deploy design on BASYS 3
