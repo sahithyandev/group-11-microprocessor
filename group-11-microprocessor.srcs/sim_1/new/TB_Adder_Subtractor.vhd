@@ -13,7 +13,7 @@ ARCHITECTURE Behavioral OF TB_Adder_Subtractor IS
             B : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             SUB : IN STD_LOGIC;
             S : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-            C_out : OUT STD_LOGIC;
+            Zero : OUT STD_LOGIC;
             Overflow : OUT STD_LOGIC
         );
     END COMPONENT;
@@ -22,7 +22,7 @@ ARCHITECTURE Behavioral OF TB_Adder_Subtractor IS
     SIGNAL A, B : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS => '0');
     SIGNAL SUB : STD_LOGIC := '0';
     SIGNAL S : STD_LOGIC_VECTOR(3 DOWNTO 0);
-    SIGNAL C_out : STD_LOGIC;
+    SIGNAL Zero : STD_LOGIC;
     SIGNAL Overflow : STD_LOGIC;
 
 BEGIN
@@ -34,7 +34,7 @@ BEGIN
         B => B,
         SUB => SUB,
         S => S,
-        C_out => C_out,
+        Zero => Zero,
         Overflow => Overflow
     );
 
@@ -65,6 +65,41 @@ BEGIN
         SUB <= '1';
         WAIT FOR 10 ns;
 
+        -- Test Case 5: 0 + 0 = 0
+        A <= "0000"; -- 0
+        B <= "0000"; -- 0
+        SUB <= '0'; -- Addition
+        WAIT FOR 10 ns;
+
+        -- Test Case 6: 15 + 1 = 16 (overflow for 4-bit)
+        A <= "1111"; -- 15
+        B <= "0001"; -- 1
+        SUB <= '0';
+        WAIT FOR 10 ns;
+
+        -- Test Case 7: 8 - 8 = 0
+        A <= "1000"; -- 8
+        B <= "1000"; -- 8
+        SUB <= '1';
+        WAIT FOR 10 ns;
+
+        -- Test Case 8: 1 - 2 = -1 (2's complement = 1111)
+        A <= "0001"; -- 1
+        B <= "0010"; -- 2
+        SUB <= '1';
+        WAIT FOR 10 ns;
+
+        -- Test Case 9: 9 + 7 = 16 (overflow for 4-bit)
+        A <= "1001"; -- 9
+        B <= "0111"; -- 7
+        SUB <= '0';
+        WAIT FOR 10 ns;
+
+        -- Test Case 10: 0 - 1 = -1 (2's complement = 1111)
+        A <= "0000"; -- 0
+        B <= "0001"; -- 1
+        SUB <= '1';
+        WAIT FOR 10 ns;
         WAIT;
     END PROCESS;
 
