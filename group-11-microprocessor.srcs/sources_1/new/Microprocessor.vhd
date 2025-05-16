@@ -82,8 +82,6 @@ ARCHITECTURE Behavioral OF Microprocessor IS
         PORT (
             Clk : IN STD_LOGIC;
             Reset : IN STD_LOGIC;
-            Enable : IN STD_LOGIC;
-            Load : IN STD_LOGIC;
             Load_value : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
             PC_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
         );
@@ -158,8 +156,6 @@ BEGIN
     PORT MAP(
         Clk => Clk,
         Reset => Reset,
-        Enable => '1',
-        Load => '1',
         Load_value => mux2_3_out,
         PC_out => pc_out
     );
