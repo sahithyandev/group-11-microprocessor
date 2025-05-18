@@ -4,8 +4,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 ENTITY Adder_3bit IS
     PORT (
         PC : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        Next_PC : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        PC_Carry : OUT STD_LOGIC
+        Next_PC : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
     );
 END Adder_3bit;
 
@@ -48,8 +47,7 @@ BEGIN
         A => PC(2),
         B => '0',
         C_in => C2,
-        S => Next_PC(2),
-        C_out => PC_Carry
+        S => Next_PC(2)
     );
 
 END Behavioral;

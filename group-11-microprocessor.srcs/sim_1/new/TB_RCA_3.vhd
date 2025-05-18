@@ -10,15 +10,13 @@ ARCHITECTURE Behavioral OF TB_PC_Incrementer IS
     COMPONENT Adder_3bit
         PORT (
             PC : IN STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3-bit input bus for PC
-            Next_PC : OUT STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3-bit output bus for Next_PC
-            PC_Carry : OUT STD_LOGIC -- Carry output
+            Next_PC : OUT STD_LOGIC_VECTOR(2 DOWNTO 0) -- 3-bit output bus for Next_PC
         );
     END COMPONENT;
 
     -- Signals to connect to PC_Incrementer
     SIGNAL PC : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
     SIGNAL Next_PC : STD_LOGIC_VECTOR(2 DOWNTO 0);
-    SIGNAL PC_Carry : STD_LOGIC;
 
 BEGIN
 
@@ -26,8 +24,7 @@ BEGIN
     UUT : Adder_3bit
     PORT MAP(
         PC => PC,
-        Next_PC => Next_PC,
-        PC_Carry => PC_Carry
+        Next_PC => Next_PC
     );
 
     -- Stimulus Process

@@ -90,8 +90,7 @@ ARCHITECTURE Behavioral OF Microprocessor IS
     COMPONENT Adder_3bit
         PORT (
             PC : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-            Next_PC : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-            PC_Carry : OUT STD_LOGIC
+            Next_PC : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -135,7 +134,6 @@ ARCHITECTURE Behavioral OF Microprocessor IS
 
     -- Signals from Adder_3bit
     SIGNAL next_pc : STD_LOGIC_VECTOR(2 DOWNTO 0);
-    SIGNAL pc_carry : STD_LOGIC;
 
     -- Signals from InstructionDecoder
     SIGNAL reg_en, reg_sel_a, reg_sel_b : STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -164,8 +162,7 @@ BEGIN
     ADDER_3 : Adder_3bit
     PORT MAP(
         PC => pc_out,
-        Next_PC => next_pc,
-        PC_Carry => pc_carry
+        Next_PC => next_pc
     );
 
     -- Mux to select between next PC or jump address
