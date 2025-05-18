@@ -85,7 +85,59 @@ BEGIN
         ASSERT (JMP_FLAG = '0')
         REPORT "JZR (nonzero) test failed" SEVERITY error;
 
-        REPORT "All tests passed!" SEVERITY note;
+        
+        ---------------------------------------------------
+        -- Additional Test Cases
+        ---------------------------------------------------
+
+        -- MOVI with highest immediate value (1111)
+        INSTRUCTION_IN <= "10" & "010" & "000" & "1111";
+        WAIT FOR 10 ns;
+        ASSERT (REG_EN = "010" AND LOAD_SEL = '1' AND IMMEDIATE_VAL = "1111")
+        REPORT "MOVI max immediate test failed" SEVERITY error;
+
+        -- MOVI with zero immediate
+        INSTRUCTION_IN <= "10" & "011" & "000" & "0000";
+        WAIT FOR 10 ns;
+        ASSERT (REG_EN = "011" AND LOAD_SEL = '1' AND IMMEDIATE_VAL = "0000")
+        REPORT "MOVI zero immediate test failed" SEVERITY error;
+
+        -- ADD with same source and destination
+        INSTRUCTION_IN <= "00" & "101" & "101" & "0000";
+        WAIT FOR 10 ns;
+        ASSERT (REG_SEL_A = "101" AND REG_SEL_B = "101" AND REG_EN = "101" AND ADD_SUB_SEL = '0')
+        REPORT "ADD same register test failed" SEVERITY error;
+
+        -- NEG with R_B only, R_A ignored
+        INSTRUCTION_IN <= "01" & "111" & "000" & "0000";
+        WAIT FOR 10 ns;
+        ASSERT (REG_SEL_B = "000" AND REG_EN = "111" AND ADD_SUB_SEL = '1')
+        REPORT "NEG edge case test failed" SEVERITY error;
+
+        -- JZR with JMP_ADDR = "000"
+        INSTRUCTION_IN <= "11" & "001" & "000" & "0000";
+        REG_CHK_JMP <= "0000";
+        WAIT FOR 10 ns;
+        ASSERT (JMP_ADDR = "000" AND JMP_FLAG = '1')
+        REPORT "JZR with zero address test failed" SEVERITY error;
+
+        -- All zeros instruction (invalid opcode if "00" used incorrectly)
+        INSTRUCTION_IN <= (OTHERS => '0');
+        WAIT FOR 10 ns;
+
+        -- All ones instruction (edge case)
+        INSTRUCTION_IN <= (OTHERS => '1');
+        REG_CHK_JMP <= "0000";
+        WAIT FOR 10 ns;
+
+        -- Unused opcode test (if applicable, e.g., "11" with undefined fields)
+        INSTRUCTION_IN <= "11" & "111" & "111" & "1111";
+        REG_CHK_JMP <= "0001";
+        WAIT FOR 10 ns;
+        ASSERT (JMP_FLAG = '0')  -- Should not jump if REG_CHK_JMP != "0000"
+        REPORT "JZR with junk fields (nonzero reg check) test failed" SEVERITY error;
+
+        REPORT "All tests completed!" SEVERITY note;
         WAIT;
     END PROCESS;
 
