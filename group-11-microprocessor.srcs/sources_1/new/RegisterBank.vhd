@@ -4,7 +4,6 @@ USE IEEE.STD_LOGIC_1164.ALL;
 ENTITY RegisterBank IS
     PORT (
         Clk : IN STD_LOGIC;
-        Reset : IN STD_LOGIC;
 
         REG_SEL : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         REG_IN : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -25,7 +24,6 @@ ARCHITECTURE Behavioral OF RegisterBank IS
     COMPONENT Register_4bit_advanced
         PORT (
             clk : IN STD_LOGIC;
-            reset : IN STD_LOGIC;
             load : IN STD_LOGIC;
             d : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
@@ -54,7 +52,6 @@ BEGIN
         D => REG_IN,
         LOAD => SEL(1),
         Clk => Clk,
-        Reset => Reset,
         Q => REG_OUT1
     );
 
@@ -63,7 +60,6 @@ BEGIN
         D => REG_IN,
         LOAD => SEL(2),
         Clk => Clk,
-        Reset => Reset,
         Q => REG_OUT2
     );
 
@@ -72,7 +68,6 @@ BEGIN
         D => REG_IN,
         LOAD => SEL(3),
         Clk => Clk,
-        Reset => Reset,
         Q => REG_OUT3
     );
 
@@ -81,7 +76,6 @@ BEGIN
         D => REG_IN,
         LOAD => SEL(4),
         Clk => Clk,
-        Reset => Reset,
         Q => REG_OUT4
     );
 
@@ -90,7 +84,6 @@ BEGIN
         D => REG_IN,
         LOAD => SEL(5),
         Clk => Clk,
-        Reset => Reset,
         Q => REG_OUT5
     );
 
@@ -99,7 +92,6 @@ BEGIN
         D => REG_IN,
         LOAD => SEL(6),
         Clk => Clk,
-        Reset => Reset,
         Q => REG_OUT6
     );
 
@@ -108,7 +100,6 @@ BEGIN
         D => REG_IN,
         LOAD => SEL(7),
         Clk => Clk,
-        Reset => Reset,
         Q => REG_OUT7
     );
 END Behavioral;

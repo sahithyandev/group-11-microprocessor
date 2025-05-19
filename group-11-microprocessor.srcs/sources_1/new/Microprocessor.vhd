@@ -16,7 +16,6 @@ ARCHITECTURE Behavioral OF Microprocessor IS
     COMPONENT RegisterBank
         PORT (
             Clk : IN STD_LOGIC;
-            Reset : IN STD_LOGIC;
 
             REG_SEL : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
             REG_IN : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -200,7 +199,6 @@ BEGIN
     REG_BANK : RegisterBank
     PORT MAP(
         Clk => Clk,
-        Reset => Reset,
         REG_SEL => reg_en,
         REG_IN => mux2_out,
         REG_OUT0 => reg_out0,
