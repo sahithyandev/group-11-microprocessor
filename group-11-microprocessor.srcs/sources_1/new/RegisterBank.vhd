@@ -21,7 +21,7 @@ END RegisterBank;
 
 ARCHITECTURE Behavioral OF RegisterBank IS
 
-    COMPONENT Register_4bit_advanced
+    COMPONENT Register_4bit
         PORT (
             clk : IN STD_LOGIC;
             load : IN STD_LOGIC;
@@ -47,7 +47,7 @@ BEGIN
     );
 
     REG_OUT0 <= "0000"; -- hardcoding value of R0 to 0000
-    Reg1 : Register_4bit_advanced
+    Reg1 : Register_4bit
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(1),
@@ -55,7 +55,7 @@ BEGIN
         Q => REG_OUT1
     );
 
-    Reg2 : Register_4bit_advanced
+    Reg2 : Register_4bit
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(2),
@@ -63,7 +63,7 @@ BEGIN
         Q => REG_OUT2
     );
 
-    Reg3 : Register_4bit_advanced
+    Reg3 : Register_4bit
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(3),
@@ -71,7 +71,7 @@ BEGIN
         Q => REG_OUT3
     );
 
-    Reg4 : Register_4bit_advanced
+    Reg4 : Register_4bit
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(4),
@@ -79,7 +79,7 @@ BEGIN
         Q => REG_OUT4
     );
 
-    Reg5 : Register_4bit_advanced
+    Reg5 : Register_4bit
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(5),
@@ -87,7 +87,7 @@ BEGIN
         Q => REG_OUT5
     );
 
-    Reg6 : Register_4bit_advanced
+    Reg6 : Register_4bit
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(6),
@@ -95,7 +95,7 @@ BEGIN
         Q => REG_OUT6
     );
 
-    Reg7 : Register_4bit_advanced
+    Reg7 : Register_4bit
     PORT MAP(
         D => REG_IN,
         LOAD => SEL(7),
