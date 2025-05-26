@@ -12,7 +12,8 @@ entity SlowClockedMicroprocessor is
         Data : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         Overflow : OUT STD_LOGIC;
         Zero : OUT STD_LOGIC;
-        Seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0));
+        Seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
+        Seg7Control: OUT STD_LOGIC_VECTOR(3 downto 0));
 end SlowClockedMicroprocessor;
 
 architecture Behavioral of SlowClockedMicroprocessor is
@@ -36,6 +37,7 @@ architecture Behavioral of SlowClockedMicroprocessor is
     signal slow_clk: std_logic;
 
 begin
+    Seg7Control <= "1110";
     SlowedClock : SlowClk
         port map (
             clk_in => Clk,
