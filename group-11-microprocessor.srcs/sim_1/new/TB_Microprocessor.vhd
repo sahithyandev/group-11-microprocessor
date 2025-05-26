@@ -66,11 +66,6 @@ BEGIN
         WAIT FOR 20 ns;
         Reset_tb <= '0';
 
-        -- Let the processor run for a while (adjust depending on program size)
-        WAIT FOR 500 ns;
-
-        -- Stop simulation
-        REPORT "Simulation finished.";
         WAIT;
     END PROCESS;
 
